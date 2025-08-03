@@ -1,0 +1,15 @@
+# DSL Grammar (EBNF)
+
+policy      ::= statement*
+statement   ::= mask_if
+mask_if     ::= "mask_if(" condition ")"
+condition   ::= expression ( ( "and" | "or" ) expression )*
+expression  ::= operand operator operand
+operand     ::= identifier | string | number
+operator    ::= "==" | "!=" | "<" | "<=" | ">" | ">="
+identifier  ::= letter ( letter | digit | "_" )*
+string      ::= '"' characters '"'
+number      ::= [ '-' ] digit+
+
+letter      ::= 'A'..'Z' | 'a'..'z'
+digit       ::= '0'..'9'
